@@ -8,7 +8,7 @@
   <meta name="keywords" content="飞机行李规定,航空物品规则,可以带上飞机的物品,行李限制,航空公司规定,行李查询,登机物品">
   <link rel="icon" type="image/svg+xml" href="https://nengdaima.cc/favicon.svg">
 
-  <title>能带吗</title>
+  <title>坐飞机能带吗</title>
 
   <meta name="robots" content="index,follow">
   <meta name="googlebot" content="index,follow">
@@ -33,7 +33,7 @@
   main {
     max-width: 50ch;
     margin: 0 auto;
-    padding: 6rem 2rem 4rem;
+    padding: 6rem 3rem;
   }
 
   .description {
@@ -115,6 +115,18 @@
     font-size: 150%;
     cursor: pointer;
   }
+
+  .grey {
+    color: #aaa;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .font-sm {
+    font-size: 90%;
+  }
 </style>
 </head>
 
@@ -126,8 +138,8 @@
         <span class="title">能带吗</span>
         <p class="subtitle">nengdaima.cc</p>
       </div>
-      <div class="description">
-        <p>坐飞机能带吗？</p>
+      <div class="description grey font-sm">
+        <p>“我多希望自己第一次坐飞机时能有这么一个网站……”</p>
       </div>
     </header>
 
@@ -138,7 +150,10 @@
     <div class="results" id="results"></div>
 
   </main>
-
+<footer style="margin-top: 6rem;">
+  <p class="grey text-center font-sm">不让带不是为了欺负你，而是为了保护你。</p>
+  <p class="grey text-center font-sm" style="margin-top: 5px;">©2025 nengdaima.cc All rights reserved.</p>
+</footer>
   <script type="module">
     import data from './data.js';
 
@@ -187,7 +202,7 @@
         });
         resultsDiv.appendChild(ul);
       } else {
-        resultsDiv.innerHTML = '<p>抱歉，我没有考虑到这个。</p>';
+        resultsDiv.innerHTML = '<p>抱歉，我还没考虑到这个，试试别的吧。</p>';
       }
     }
   </script>
