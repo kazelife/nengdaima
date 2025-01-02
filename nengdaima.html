@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>能带吗</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: #ccc;
+    }
+
+    html {
+      line-height: 1.5;
+      font-family: system-ui, sans-serif;
+      color: #333;
+    }
+
+    main {
+      max-width: 50ch;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .description {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .title,
+    .subtitle {
+      font-size: 1.5rem;
+      font-weight: 700;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(to bottom, #1156d6, #6fadf0);
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+    }
+
+    .container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .searchbox {
+      width: 100%;
+      min-height: 3rem;
+      max-height: 10rem;
+      resize: none;
+      background-color: rgba(148, 163, 184, 0.15);
+      padding: .75rem;
+    }
+
+    select {
+      background-color: rgba(148, 163, 184, 0.15);
+    }
+
+    input,
+    button,
+    select {
+      font-family: inherit;
+      font-size: 100%;
+      font-weight: inherit;
+      line-height: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+    }
+
+    .btn {
+      width: 7rem;
+      height: 3rem;
+      background-color: rgba(148, 163, 184, 0.15);
+      padding: .5rem 1rem;
+    }
+
+    .results {
+      margin-top: 30px;
+      margin-left: 10px;
+      max-width: 50ch;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    [type=search]::-webkit-search-cancel-button {
+      font-size: 150%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+
+    <header>
+      <div class="title-container">
+        <span class="title">能带吗</span>
+        <p class="subtitle">nengdaima.cc</p>
+      </div>
+      <div class="description">
+        <p>坐飞机能带吗？</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <input type="search" placeholder="输入物品名称后回车" class="searchbox" id="searchbox">
+      <button class="btn">搜索</button>
+    </div>
+    <div class="results" id="results"></div>
+
+  </main>
+
+  <script type="module">
+    import data from './data.js';
+
+    const searchbox = document.getElementById('searchbox');
+    const resultsDiv = document.getElementById('results');
+    const searchButton = document.querySelector('.btn');
+
+    searchButton.addEventListener('click', function () {
+      const query = searchbox.value.trim();
+      if (query) {
+        const results = searchData(query);
+        displayResults(results);
+      } else {
+        resultsDiv.innerHTML = '';
+      }
+    });
+
+    searchbox.addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const query = searchbox.value.trim();
+        if (query) {
+          const results = searchData(query);
+          displayResults(results);
+        } else {
+          resultsDiv.innerHTML = '';
+        }
+      }
+    });
+
+    function searchData(query) {
+      const lowerCaseQuery = query.toLowerCase();
+      return data.filter(item => {
+        return item.title.toLowerCase().includes(lowerCaseQuery) || item.content.toLowerCase().includes(lowerCaseQuery);
+      });
+    }
+
+    function displayResults(results) {
+      resultsDiv.innerHTML = '';
+      if (results && results.length > 0) {
+        const ul = document.createElement('ul');
+        results.forEach(result => {
+          const li = document.createElement('li');
+          li.textContent = `${result.title}: ${result.content}`;
+          ul.appendChild(li);
+        });
+        resultsDiv.appendChild(ul);
+      } else {
+        resultsDiv.innerHTML = '<p>未找到结果。</p>';
+      }
+    }
+  </script>
+</body>
+
+</html>
