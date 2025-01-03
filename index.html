@@ -140,6 +140,7 @@
     color: #aaa;
     text-decoration: none;
   }
+
   a:hover {
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -167,11 +168,13 @@
     <div class="results" id="results"></div>
 
   </main>
-<footer style="margin-top: 4rem;">
-  <p class="grey text-center font-sm" style="margin-bottom: 5px;"><a href="https://kazelife.com/domestic-carry-on-baggage-rules/" target="_blank" rel="noreferrer noopener">&#10146; 国内航班对于随身行李的规定汇总</a></p>
-  <!-- <p class="grey text-center font-sm">不让带不是故意为难你，而是为了保护你。</p> -->
-  <p class="grey text-center font-sm" style="margin-top: 5px;">© 2025 nengdaima.cc All rights reserved.</p>
-</footer>
+  <footer style="margin-top: 4rem;">
+    <p class="grey text-center font-sm" style="margin-bottom: 5px;"><a
+        href="https://kazelife.com/domestic-carry-on-baggage-rules/" target="_blank" rel="noreferrer noopener">&#10146;
+        国内航班对于随身行李的规定汇总</a></p>
+    <!-- <p class="grey text-center font-sm">不让带不是故意为难你，而是为了保护你。</p> -->
+    <p class="grey text-center font-sm" style="margin-top: 5px;">© 2025 nengdaima.cc All rights reserved.</p>
+  </footer>
   <script type="module">
     import data from './data.js';
 
@@ -205,9 +208,10 @@
     function searchData(query) {
       const lowerCaseQuery = query.toLowerCase();
       return data.filter(item => {
-        return item.title.toLowerCase().includes(lowerCaseQuery) || item.content.toLowerCase().includes(lowerCaseQuery);
+        return item.title.toLowerCase().includes(lowerCaseQuery);
       });
     }
+
 
     function displayResults(results) {
       resultsDiv.innerHTML = '';
